@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 
-from app.api import impact, masters
+from app.api import impact, masters, semantic
 from app.db import get_connection
 
 app = FastAPI(title="Test Calibre - Impact Analysis Agent POC")
 
 app.include_router(impact.router)
 app.include_router(masters.router)
+app.include_router(semantic.router)
 
 
 @app.get("/health")

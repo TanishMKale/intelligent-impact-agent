@@ -1,3 +1,6 @@
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
 CREATE TABLE lob (
     lob_id TEXT PRIMARY KEY,
     lob_name TEXT NOT NULL
@@ -74,7 +77,8 @@ CREATE TABLE impact_run (
     input_text TEXT,
     extracted_json JSONB,
     created_at TIMESTAMP DEFAULT NOW(),
-    status TEXT
+    status TEXT,
+    result_json JSONB
 );
 
 CREATE TABLE impact_result (
@@ -85,7 +89,8 @@ CREATE TABLE impact_result (
     evidence_type TEXT,
     score NUMERIC,
     reason TEXT,
-    included BOOLEAN
+    included BOOLEAN,
+    mandatory BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE review_action (
